@@ -3,7 +3,9 @@ url: https://raw.githubusercontent.com/api-evangelist/zilliz/refs/heads/main/api
 name: Zilliz
 x-type: company
 description: >-
-  Zilliz Cloud is a managed vector database service built on Milvus. Offers serverless, dedicated, and BYOC plans for production-scale similarity search.
+  Zilliz Cloud is the managed vector database service built by the Milvus maintainers.
+  It exposes a Control Plane API for cluster management and a Data Plane API for vector
+  operations. Offers Serverless, Dedicated, and BYOC plans.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Vector Database
@@ -14,10 +16,51 @@ tags:
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: zilliz:zilliz-control-plane
+    name: Zilliz Cloud Control Plane API
+    humanURL: https://docs.zilliz.com/reference/restful
+    baseURL: https://api.cloud.zilliz.com/v2
+    tags:
+      - REST
+      - Cluster Management
+      - Billing
+      - Backups
+    description: >-
+      The Control Plane API manages clusters (create / modify / suspend), users, roles,
+      backups, alerts, metrics, and billing. Authentication is Bearer with a Zilliz API
+      key.
+    properties:
+      - type: Documentation
+        url: https://docs.zilliz.com/reference/restful
+      - type: Authentication
+        url: https://docs.zilliz.com/reference/restful
+  - aid: zilliz:zilliz-data-plane
+    name: Zilliz Cloud Data Plane API
+    humanURL: https://docs.zilliz.com/reference/restful
+    baseURL: https://{cluster_endpoint}/v2/vectordb
+    tags:
+      - REST
+      - Collections
+      - Vectors
+      - Search
+    description: >-
+      Data Plane endpoints handle collection, vector, partition, index, and role
+      operations on a specific cluster. Authentication accepts either a Zilliz API key
+      or a cluster `db_admin:password` pair.
+    properties:
+      - type: Documentation
+        url: https://docs.zilliz.com/reference/restful
 common:
   - type: Website
     url: https://zilliz.com/
+  - type: Portal
+    url: https://docs.zilliz.com/
+  - type: Pricing
+    url: https://zilliz.com/pricing
+  - type: ParentRelationship
+    title: Maintainer of Milvus
+    url: https://milvus.io/
   - type: Plans
     url: plans/zilliz-plans-pricing.yml
   - type: RateLimits

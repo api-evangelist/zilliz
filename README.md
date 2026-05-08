@@ -1,6 +1,6 @@
 # Zilliz (zilliz)
 
-Zilliz Cloud is a managed vector database service built on Milvus. Offers serverless, dedicated, and BYOC plans for production-scale similarity search.
+Zilliz Cloud is the managed vector database service built by the Milvus maintainers. It exposes a Control Plane API for cluster management and a Data Plane API for vector operations. Offers Serverless, Dedicated, and BYOC plans.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/zilliz/refs/heads/main/apis.yml)
 
@@ -9,8 +9,12 @@ Zilliz Cloud is a managed vector database service built on Milvus. Offers server
 ## Type
 - **x-type:** company
 
-## Tags:
- - Vector Database, AI, Cloud, Milvus, Managed
+## APIs
+- **Zilliz Cloud Control Plane API** - `https://api.cloud.zilliz.com/v2`. Bearer API key. Cluster create/modify/suspend, users, roles, backups, alerts, metrics, billing.
+- **Zilliz Cloud Data Plane API** - `{cluster_endpoint}/v2/vectordb`. Bearer API key or `db_admin:password`. Collections, vectors, partitions, indexes, roles.
+
+## Tags
+- Vector Database, AI, Cloud, Milvus, Managed
 
 ## Timestamps
 - **Created:** 2026-05-08
@@ -18,9 +22,16 @@ Zilliz Cloud is a managed vector database service built on Milvus. Offers server
 
 ## Common Properties
 - [Website](https://zilliz.com/)
-- [Plans](plans/zilliz-plans-pricing.yml) — placeholder, pipeline reconciles later
-- [RateLimits](rate-limits/zilliz-rate-limits.yml) — placeholder
-- [FinOps](finops/zilliz-finops.yml) — FOCUS-aligned placeholder
+- [Documentation](https://docs.zilliz.com/)
+- [Pricing](https://zilliz.com/pricing)
+- [Maintainer of Milvus](https://milvus.io/)
+- [Plans](plans/zilliz-plans-pricing.yml)
+- [RateLimits](rate-limits/zilliz-rate-limits.yml)
+- [FinOps](finops/zilliz-finops.yml)
+
+## Notes
+- Pricing partial — three tiers (Serverless / Dedicated / BYOC) confirmed but exact rates not extracted from the public pricing page (calculator-driven).
+- Clean Control Plane vs Data Plane split is a strong API design pattern; few competitors document the boundary as cleanly.
 
 ## Maintainers
 **FN:** Kin Lane
