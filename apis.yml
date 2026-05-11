@@ -67,6 +67,25 @@ common:
     url: rate-limits/zilliz-rate-limits.yml
   - type: FinOps
     url: finops/zilliz-finops.yml
+  - type: Integrations
+    url: https://zilliz.com/partners
+integrations:
+  - name: AWS
+  - name: Arize AI
+  - name: Voxel51
+  - name: Confluent
+  - name: Microsoft
+  - name: Google Cloud
+  - name: Airbyte
+  - name: NVIDIA
+  - name: OpenAI
+  - name: Hugging Face
+  - name: Cohere
+  - name: LangChain
+  - name: LlamaIndex
+  - name: PyTorch
+  - name: Data Science Dojo
+  - name: Voyage AI
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
