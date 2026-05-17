@@ -1,7 +1,7 @@
 aid: zilliz
 url: https://raw.githubusercontent.com/api-evangelist/zilliz/refs/heads/main/apis.yml
 name: Zilliz
-x-type: company
+kind: company
 description: >-
   Zilliz Cloud is the managed vector database service built by the Milvus maintainers.
   It exposes a Control Plane API for cluster management and a Data Plane API for vector
