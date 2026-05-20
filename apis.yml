@@ -52,6 +52,10 @@ apis:
       - type: Documentation
         url: https://docs.zilliz.com/reference/restful
 common:
+  - type: GitHubOrganization
+    url: https://github.com/zilliztech
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/zilliz
   - type: Website
     url: https://zilliz.com/
   - type: Portal
