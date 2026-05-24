@@ -73,6 +73,8 @@ common:
     url: finops/zilliz-finops.yml
   - type: Integrations
     url: https://zilliz.com/partners
+  - type: LLMsTxt
+    url: https://docs.zilliz.com/llms.txt
 integrations:
   - name: AWS
   - name: Arize AI
