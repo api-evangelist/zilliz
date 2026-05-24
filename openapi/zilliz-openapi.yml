@@ -1,0 +1,223 @@
+openapi: 3.1.0
+info:
+  title: Zilliz Cloud API
+  description: |-
+    Zilliz Cloud exposes two HTTP API surfaces, both documented at
+    docs.zilliz.com/reference/restful. The Control Plane API (hosted at
+    api.cloud.zilliz.com/v2) is used by account owners and operators to manage
+    clusters, users, and roles. The Data Plane API (hosted at the
+    per-cluster vectordb.zillizcloud.com endpoint) is used by applications to
+    create collections and read or write vector data. Both surfaces are
+    authenticated with a Bearer API key.
+  version: '2.0'
+  contact:
+    name: Zilliz Documentation
+    url: https://docs.zilliz.com/reference/restful
+servers:
+  - url: https://api.cloud.zilliz.com/v2
+    description: Control Plane
+  - url: https://{cluster_id}.{region}.vectordb.zillizcloud.com
+    description: Data Plane (per cluster)
+    variables:
+      cluster_id:
+        default: in03-xxxxxxxxxxxxxxx
+      region:
+        default: aws-us-west-2
+security:
+  - bearerAuth: []
+tags:
+  - name: Cloud Providers
+    description: Control plane: cloud and region discovery.
+  - name: Clusters
+    description: Control plane: cluster lifecycle management.
+  - name: Collections
+    description: Data plane: vector collection operations.
+paths:
+  /clouds:
+    get:
+      tags: [Cloud Providers]
+      summary: List supported cloud providers and regions
+      operationId: listClouds
+      responses:
+        '200':
+          description: Cloud provider listing.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CloudList' }
+  /clusters:
+    get:
+      tags: [Clusters]
+      summary: List clusters
+      operationId: listClusters
+      parameters:
+        - name: pageSize
+          in: query
+          schema: { type: integer }
+          description: Records per page.
+        - name: currentPage
+          in: query
+          schema: { type: integer }
+          description: Page number (1-based).
+        - name: region
+          in: query
+          schema: { type: string }
+          description: Filter by cloud region.
+      responses:
+        '200':
+          description: A page of clusters.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ClusterList' }
+  /clusters/createServerless:
+    post:
+      tags: [Clusters]
+      summary: Create a Serverless cluster
+      operationId: createServerlessCluster
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CreateClusterRequest' }
+      responses:
+        '200':
+          description: Created cluster identifiers.
+  /clusters/createDedicated:
+    post:
+      tags: [Clusters]
+      summary: Create a Dedicated cluster
+      operationId: createDedicatedCluster
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CreateClusterRequest' }
+      responses:
+        '200': { description: Created cluster identifiers. }
+  /clusters/{clusterId}:
+    parameters:
+      - { name: clusterId, in: path, required: true, schema: { type: string } }
+    get:
+      tags: [Clusters]
+      summary: Describe a cluster
+      operationId: describeCluster
+      responses:
+        '200':
+          description: Cluster details.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Cluster' }
+    delete:
+      tags: [Clusters]
+      summary: Drop a cluster
+      operationId: dropCluster
+      responses:
+        '200': { description: Cluster scheduled for deletion. }
+  /clusters/{clusterId}/suspend:
+    post:
+      tags: [Clusters]
+      summary: Suspend a cluster
+      operationId: suspendCluster
+      parameters:
+        - { name: clusterId, in: path, required: true, schema: { type: string } }
+      responses:
+        '200': { description: Cluster suspended. }
+  /clusters/{clusterId}/resume:
+    post:
+      tags: [Clusters]
+      summary: Resume a suspended cluster
+      operationId: resumeCluster
+      parameters:
+        - { name: clusterId, in: path, required: true, schema: { type: string } }
+      responses:
+        '200': { description: Cluster resumed. }
+  /v2/vectordb/collections/list:
+    post:
+      tags: [Collections]
+      summary: List collections (Data Plane)
+      description: |-
+        Lists the collections in a Zilliz Cloud cluster. Hosted on the data-plane
+        endpoint of the cluster, not on the control plane.
+      operationId: listCollections
+      servers:
+        - url: https://{cluster_id}.{region}.vectordb.zillizcloud.com
+          variables:
+            cluster_id: { default: in03-xxxxxxxxxxxxxxx }
+            region: { default: aws-us-west-2 }
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dbName:
+                  type: string
+                  description: Optional database name; defaults to the default DB.
+      responses:
+        '200':
+          description: List of collection names.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code: { type: integer }
+                  data:
+                    type: array
+                    items: { type: string }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API key (or cluster username:password on data plane)
+      description: |-
+        Provide the API key in the Authorization header as
+        `Authorization: Bearer ${API_KEY}`. On the data plane, the cluster
+        endpoint additionally accepts `Bearer <username>:<password>` while
+        the project endpoint accepts the API key only.
+  schemas:
+    CloudList:
+      type: object
+      properties:
+        code: { type: integer }
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              cloudId: { type: string }
+              regions:
+                type: array
+                items: { type: string }
+    Cluster:
+      type: object
+      properties:
+        clusterId: { type: string }
+        clusterName: { type: string }
+        status: { type: string }
+        cuSize: { type: integer }
+        deploymentOption: { type: string }
+        region: { type: string }
+    ClusterList:
+      type: object
+      properties:
+        code: { type: integer }
+        data:
+          type: object
+          properties:
+            currentPage: { type: integer }
+            pageSize: { type: integer }
+            count: { type: integer }
+            clusters:
+              type: array
+              items: { $ref: '#/components/schemas/Cluster' }
+    CreateClusterRequest:
+      type: object
+      properties:
+        clusterName: { type: string }
+        regionId: { type: string }
+        projectId: { type: string }
+        plan: { type: string, description: 'Serverless | Standard | Enterprise' }
+        cuSize: { type: integer }
+        cuType: { type: string }
