@@ -73,7 +73,7 @@ common:
     url: finops/zilliz-finops.yml
   - type: Integrations
     url: https://zilliz.com/partners
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.zilliz.com/llms.txt
 integrations:
   - name: AWS
