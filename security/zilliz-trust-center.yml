@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://zilliz.com/trust-center
+url: https://zilliz.com/trust-center
+certifications:
+- SOC 2
+- ISO 27001
+- HIPAA
+- GDPR
+evidence:
+- source: https://zilliz.com/trust-center
+  keywords:
+  - soc 2
+  - hipaa
+  - trust center
+  - gdpr

@@ -52,6 +52,10 @@ apis:
       - type: Documentation
         url: https://docs.zilliz.com/reference/restful
 common:
+  - type: TrustCenter
+    url: security/zilliz-trust-center.yml
+  - type: DomainSecurity
+    url: security/zilliz-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/zilliztech
   - type: LinkedIn
