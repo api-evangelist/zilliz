@@ -6,7 +6,19 @@ description: >-
   Zilliz Cloud is the managed vector database service built by the Milvus maintainers.
   It exposes a Control Plane API for cluster management and a Data Plane API for vector
   operations. Offers Serverless, Dedicated, and BYOC plans.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/zilliz.png
 tags:
   - Vector Database
   - AI
