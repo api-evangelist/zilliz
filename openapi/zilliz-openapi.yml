@@ -27,11 +27,11 @@ security:
   - bearerAuth: []
 tags:
   - name: Cloud Providers
-    description: Control plane: cloud and region discovery.
+    description: "Control plane: cloud and region discovery."
   - name: Clusters
-    description: Control plane: cluster lifecycle management.
+    description: "Control plane: cluster lifecycle management."
   - name: Collections
-    description: Data plane: vector collection operations.
+    description: "Data plane: vector collection operations."
 paths:
   /clouds:
     get:
