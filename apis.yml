@@ -29,40 +29,68 @@ created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
 apis:
-  - aid: zilliz:zilliz-control-plane
-    name: Zilliz Cloud Control Plane API
-    humanURL: https://docs.zilliz.com/reference/restful
-    baseURL: https://api.cloud.zilliz.com/v2
-    tags:
-      - REST
-      - Cluster Management
-      - Billing
-      - Backups
-    description: >-
-      The Control Plane API manages clusters (create / modify / suspend), users, roles,
-      backups, alerts, metrics, and billing. Authentication is Bearer with a Zilliz API
-      key.
-    properties:
-      - type: Documentation
-        url: https://docs.zilliz.com/reference/restful
-      - type: Authentication
-        url: https://docs.zilliz.com/reference/restful
-  - aid: zilliz:zilliz-data-plane
-    name: Zilliz Cloud Data Plane API
-    humanURL: https://docs.zilliz.com/reference/restful
-    baseURL: https://{cluster_endpoint}/v2/vectordb
-    tags:
-      - REST
-      - Collections
-      - Vectors
-      - Search
-    description: >-
-      Data Plane endpoints handle collection, vector, partition, index, and role
-      operations on a specific cluster. Authentication accepts either a Zilliz API key
-      or a cluster `db_admin:password` pair.
-    properties:
-      - type: Documentation
-        url: https://docs.zilliz.com/reference/restful
+- aid: zilliz:zilliz-control-plane
+  name: Zilliz Cloud Control Plane API
+  humanURL: https://docs.zilliz.com/reference/restful
+  baseURL: https://api.cloud.zilliz.com/v2
+  tags:
+  - REST
+  - Cluster Management
+  - Billing
+  - Backups
+  description: >-
+    The Control Plane API manages clusters (create / modify / suspend), users, roles, backups, alerts,
+    metrics, and billing. Authentication is Bearer with a Zilliz API key.
+  properties:
+  - type: Documentation
+    url: https://docs.zilliz.com/reference/restful
+  - type: Authentication
+    url: https://docs.zilliz.com/reference/restful
+- aid: zilliz:zilliz-data-plane
+  name: Zilliz Cloud Data Plane API
+  humanURL: https://docs.zilliz.com/reference/restful
+  baseURL: https://{cluster_endpoint}/v2/vectordb
+  tags:
+  - REST
+  - Collections
+  - Vectors
+  - Search
+  description: >-
+    Data Plane endpoints handle collection, vector, partition, index, and role operations on a specific
+    cluster. Authentication accepts either a Zilliz API key or a cluster `db_admin:password` pair.
+  properties:
+  - type: Documentation
+    url: https://docs.zilliz.com/reference/restful
+- aid: zilliz:zilliz-cloud-providers-api
+  name: Zilliz Cloud Providers API
+  description: 'Control plane: cloud and region discovery.'
+  humanURL: https://docs.zilliz.com/reference/restful
+  baseURL: https://api.cloud.zilliz.com/v2
+  tags:
+  - Cloud Providers
+  properties:
+  - type: OpenAPI
+    url: openapi/zilliz-cloud-providers-api-openapi.yml
+- aid: zilliz:zilliz-clusters-api
+  name: Zilliz Clusters API
+  description: 'Control plane: cluster lifecycle management.'
+  humanURL: https://docs.zilliz.com/reference/restful
+  baseURL: https://api.cloud.zilliz.com/v2
+  tags:
+  - Clusters
+  properties:
+  - type: OpenAPI
+    url: openapi/zilliz-clusters-api-openapi.yml
+- aid: zilliz:zilliz-collections-api
+  name: Zilliz Collections API
+  description: 'Data plane: vector collection operations.'
+  humanURL: https://docs.zilliz.com/reference/restful
+  baseURL: https://api.cloud.zilliz.com/v2
+  tags:
+  - Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/zilliz-collections-api-openapi.yml
 common:
   - type: TrustCenter
     url: security/zilliz-trust-center.yml
