@@ -1,0 +1,23 @@
+{
+  "provider": "zilliz",
+  "sources": [
+    "zilliz-cloud-providers-api-openapi.yml",
+    "zilliz-clusters-api-openapi.yml",
+    "zilliz-collections-api-openapi.yml"
+  ],
+  "outputs": [
+    "zilliz-cloud-providers-api-openapi.yml",
+    "zilliz-clusters-api-openapi.yml",
+    "zilliz-collections-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "zilliz-cloud-providers-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "zilliz-clusters-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "zilliz-collections-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": []
+}

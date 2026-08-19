@@ -1,0 +1,116 @@
+{
+  "item": [
+    {
+      "id": "84b0e656-3588-4714-b3e9-ac70f087dbf3",
+      "name": "Cloud Providers",
+      "description": {
+        "content": "Control plane: cloud and region discovery.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6a7cbaae-4beb-4647-bffe-e821319f33d1",
+          "name": "List supported cloud providers and regions",
+          "request": {
+            "name": "List supported cloud providers and regions",
+            "description": {},
+            "url": {
+              "path": [
+                "clouds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "43f70e67-f996-4d1c-adf6-0408fff27dfa",
+              "name": "Cloud provider listing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "clouds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6241,\n  \"data\": [\n    {\n      \"cloudId\": \"string\",\n      \"regions\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"cloudId\": \"string\",\n      \"regions\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cloud.zilliz.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a1f90810-160f-46f8-9104-537b9824c950",
+    "name": "Zilliz Cloud Cloud Providers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Zilliz Cloud exposes two HTTP API surfaces, both documented at\ndocs.zilliz.com/reference/restful. The Control Plane API (hosted at\napi.cloud.zilliz.com/v2) is used by account owners and operators to manage\nclusters, users, and roles. The Data Plane API (hosted at the\nper-cluster vectordb.zillizcloud.com endpoint) is used by applications to\ncreate collections and read or write vector data. Both surfaces are\nauthenticated with a Bearer API key.\n\nContact Support:\n Name: Zilliz Documentation",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+openapi: 3.2.0
+info:
+  title: Zilliz Cloud Collections API
+  description: 'Zilliz Cloud exposes two HTTP API surfaces, both documented at
+
+    docs.zilliz.com/reference/restful. The Control Plane API (hosted at
+
+    api.cloud.zilliz.com/v2) is used by account owners and operators to manage
+
+    clusters, users, and roles. The Data Plane API (hosted at the
+
+    per-cluster vectordb.zillizcloud.com endpoint) is used by applications to
+
+    create collections and read or write vector data. Both surfaces are
+
+    authenticated with a Bearer API key.'
+  version: '2.0'
+  contact:
+    name: Zilliz Documentation
+    url: https://docs.zilliz.com/reference/restful
+servers:
+- url: https://api.cloud.zilliz.com/v2
+  description: Control Plane
+- url: https://{cluster_id}.{region}.vectordb.zillizcloud.com
+  description: Data Plane (per cluster)
+  variables:
+    cluster_id:
+      default: in03-xxxxxxxxxxxxxxx
+    region:
+      default: aws-us-west-2
+security:
+- bearerAuth: []
+tags:
+- name: Collections
+  description: 'Data plane: vector collection operations.'
+paths:
+  /v2/vectordb/collections/list:
+    post:
+      tags:
+      - Collections
+      summary: List collections (Data Plane)
+      description: 'Lists the collections in a Zilliz Cloud cluster. Hosted on the data-plane
+
+        endpoint of the cluster, not on the control plane.'
+      operationId: listCollections
+      servers:
+      - url: https://{cluster_id}.{region}.vectordb.zillizcloud.com
+        variables:
+          cluster_id:
+            default: in03-xxxxxxxxxxxxxxx
+          region:
+            default: aws-us-west-2
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dbName:
+                  type: string
+                  description: Optional database name; defaults to the default DB.
+      responses:
+        '200':
+          description: List of collection names.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      type: string
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API key (or cluster username:password on data plane)
+      description: 'Provide the API key in the Authorization header as
+
+        `Authorization: Bearer ${API_KEY}`. On the data plane, the cluster
+
+        endpoint additionally accepts `Bearer <username>:<password>` while
+
+        the project endpoint accepts the API key only.'

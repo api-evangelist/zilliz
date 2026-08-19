@@ -1,0 +1,174 @@
+{
+  "item": [
+    {
+      "id": "4f7934ba-1e94-4f32-ade7-54b8ad178284",
+      "name": "Collections",
+      "description": {
+        "content": "Data plane: vector collection operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31ce0c2a-0c35-49bd-9cb1-6baf6a453895",
+          "name": "List collections (Data Plane)",
+          "request": {
+            "name": "List collections (Data Plane)",
+            "description": {
+              "content": "Lists the collections in a Zilliz Cloud cluster. Hosted on the data-plane\nendpoint of the cluster, not on the control plane.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "v2",
+                "vectordb",
+                "collections",
+                "list"
+              ],
+              "host": [
+                "{{cluster_id}}",
+                "{{region}}",
+                "vectordb",
+                "zillizcloud",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dbName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d8a1662d-0aac-4be2-b049-945930334061",
+              "name": "List of collection names.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "v2",
+                    "vectordb",
+                    "collections",
+                    "list"
+                  ],
+                  "host": [
+                    "{{cluster_id}}",
+                    "{{region}}",
+                    "vectordb",
+                    "zillizcloud",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dbName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6477,\n  \"data\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cloud.zilliz.com/v2",
+      "key": "baseUrl"
+    },
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "in03-xxxxxxxxxxxxxxx",
+      "key": "cluster_id"
+    },
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "aws-us-west-2",
+      "key": "region"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1a3ed341-cd4d-433f-b46c-98ec2df2c84c",
+    "name": "Zilliz Cloud Collections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Zilliz Cloud exposes two HTTP API surfaces, both documented at\ndocs.zilliz.com/reference/restful. The Control Plane API (hosted at\napi.cloud.zilliz.com/v2) is used by account owners and operators to manage\nclusters, users, and roles. The Data Plane API (hosted at the\nper-cluster vectordb.zillizcloud.com endpoint) is used by applications to\ncreate collections and read or write vector data. Both surfaces are\nauthenticated with a Bearer API key.\n\nContact Support:\n Name: Zilliz Documentation",
+      "type": "text/plain"
+    }
+  }
+}
