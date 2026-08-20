@@ -21,6 +21,12 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/zilliz.png
 tags:
   - Vector Database
+  - Artificial Intelligence
+  - Cloud
+  - Milvus
+  - Managed
+tags_raw:
+  - Vector Database
   - AI
   - Cloud
   - Milvus
@@ -52,6 +58,11 @@ apis:
   baseURL: https://{cluster_endpoint}/v2/vectordb
   tags:
   - REST
+  - Collection
+  - Vectors
+  - Search
+  tags_raw:
+  - REST
   - Collections
   - Vectors
   - Search
@@ -77,6 +88,8 @@ apis:
   humanURL: https://docs.zilliz.com/reference/restful
   baseURL: https://api.cloud.zilliz.com/v2
   tags:
+  - Cluster
+  tags_raw:
   - Clusters
   properties:
   - type: OpenAPI
@@ -87,6 +100,8 @@ apis:
   humanURL: https://docs.zilliz.com/reference/restful
   baseURL: https://api.cloud.zilliz.com/v2
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
