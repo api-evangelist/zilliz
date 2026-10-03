@@ -152,6 +152,21 @@ paths:
           description: Cluster resumed.
 components:
   schemas:
+    Cluster:
+      type: object
+      properties:
+        clusterId:
+          type: string
+        clusterName:
+          type: string
+        status:
+          type: string
+        cuSize:
+          type: integer
+        deploymentOption:
+          type: string
+        region:
+          type: string
     CreateClusterRequest:
       type: object
       properties:
@@ -167,21 +182,6 @@ components:
         cuSize:
           type: integer
         cuType:
-          type: string
-    Cluster:
-      type: object
-      properties:
-        clusterId:
-          type: string
-        clusterName:
-          type: string
-        status:
-          type: string
-        cuSize:
-          type: integer
-        deploymentOption:
-          type: string
-        region:
           type: string
     ClusterList:
       type: object
