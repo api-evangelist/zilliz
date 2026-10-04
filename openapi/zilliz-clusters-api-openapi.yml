@@ -167,22 +167,6 @@ components:
           type: string
         region:
           type: string
-    CreateClusterRequest:
-      type: object
-      properties:
-        clusterName:
-          type: string
-        regionId:
-          type: string
-        projectId:
-          type: string
-        plan:
-          type: string
-          description: Serverless | Standard | Enterprise
-        cuSize:
-          type: integer
-        cuType:
-          type: string
     ClusterList:
       type: object
       properties:
@@ -201,6 +185,22 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Cluster'
+    CreateClusterRequest:
+      type: object
+      properties:
+        clusterName:
+          type: string
+        regionId:
+          type: string
+        projectId:
+          type: string
+        plan:
+          type: string
+          description: Serverless | Standard | Enterprise
+        cuSize:
+          type: integer
+        cuType:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http
