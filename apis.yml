@@ -37,12 +37,14 @@ tags:
   - Cloud
   - Milvus
   - Managed
+  - Vector Search
 tags_raw:
   - Vector Database
   - AI
   - Cloud
   - Milvus
   - Managed
+  - Vector Search
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.23'
@@ -119,6 +121,9 @@ apis:
   - type: OpenAPI
     url: openapi/zilliz-collections-api-openapi.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/zilliz-capability-edges.yml
+    name: Zilliz Business Capability Map
   - type: TrustCenter
     url: security/zilliz-trust-center.yml
   - type: DomainSecurity
