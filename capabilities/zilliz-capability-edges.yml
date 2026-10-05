@@ -1,0 +1,26 @@
+slug: zilliz
+provider: Zilliz
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Clusters
+  spec_file: zilliz-clusters-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.74
+  evidence: POST /clusters/createDedicated  createDedicatedCluster  Create a Dedicated cluster; POST /clusters/{clusterId}/suspend  suspendCluster
+  reason: Operations provision, describe, suspend, resume and drop managed vector-database clusters —
+    lifecycle control of cloud compute/storage infrastructure, i.e. IT Infrastructure Management. Tenant-provisioning
+    capabilities were considered but these are the operator's own cloud resources, not multi-tenant SaaS
+    tenants.
