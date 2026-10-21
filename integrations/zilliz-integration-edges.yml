@@ -12,6 +12,7 @@ checked:
 - https://officialskills.sh/sitemap.xml
 - https://skillsmp.com/sitemap.xml
 - https://www.skills.sh/sitemap.xml
+- terraform/integrations/terraform-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: Microsoft Azure Marketplace
@@ -29,23 +30,6 @@ edges:
   seller_name: Zilliz US
   detected_by: sweep-cloud-marketplaces.py
   detected: '2026-10-13'
-- partner_name: Datadog (own)
-  partner: datadog
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://github.com/DataDog/integrations-extras/tree/master/zilliz_cloud_zilliz_cloud
-  mirror_of: datadog/integrations/datadog-integration-edges.yml
-  apps:
-  - Zilliz Cloud
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: AI/ML
 - partner_name: LF AI & Data (Landscape)
   partner: lf-ai-data
   partner_match: register
@@ -146,5 +130,41 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-agent-skills.py
   first_seen: '2026-10-20'
+- partner_name: Datadog (own)
+  partner: datadog
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://github.com/DataDog/integrations-extras/tree/master/zilliz_cloud_zilliz_cloud
+  mirror_of: datadog/integrations/datadog-integration-edges.yml
+  apps:
+  - Zilliz Cloud
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: AI/ML
+- partner_name: Terraform (terraform-registry)
+  partner: terraform
+  partner_match: mirror
+  mirror_match: register
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: terraform-registry
+  evidence: https://registry.terraform.io/providers/zilliztech/zillizcloud
+  mirror_of: terraform/integrations/terraform-integration-edges.yml
+  apps:
+  - zilliztech/zillizcloud
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: infrastructure-as-code provider registry listing
+  badges:
+  - Verified publisher (Terraform partner tier)
 source:
 - datadog/integrations/datadog-integration-edges.yml
